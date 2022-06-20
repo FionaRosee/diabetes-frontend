@@ -13,6 +13,7 @@ const router = createRouter({
     },
     {
       path: "/general_information",
+      name: "generalInformation",
       component: GeneralInformation
     },
     {

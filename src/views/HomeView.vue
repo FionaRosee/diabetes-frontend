@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 function startcheck() {
-  router.push({ name: "questionpageone" });
+  router.push({ name: "generalInformation" });
 }
 </script>
 
