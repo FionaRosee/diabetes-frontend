@@ -17,6 +17,71 @@ import { BIconArrowRightCircleFill, BIconHouse } from "bootstrap-icons-vue";
   </main>
 </template>
 
+<script>
+import { get, set } from "idb-keyval";
+export default {
+  methods: {
+    prepareDB() {
+      //userEntries
+      get("userEntries").then((data) => {
+        if (data == null) {
+          let userEntries = {
+            gender: "",
+            age: "",
+            height: "",
+            weight: "",
+          };
+          set("userEntries", JSON.parse(JSON.stringify(userEntries)))
+            .then(() => {
+              console.log(
+                "APP start - no user entires - empty object created in indexedDB"
+              );
+            })
+            .catch(console.warn);
+        }
+        console.log("APP start - user entires existing in indexedDB");
+      });
+      //data backend request
+      get("dataBackendRequest").then((data) => {
+        if (data == null) {
+          let dataBackendRequest = {
+            "Age": null,
+            "Gender": null,
+            "Polyuria": null,
+            "Polydipsia": null,
+            "sudden weight loss": null,
+            "weakness": null,
+            "Polyphagia": null,
+            "Genital thrush": null,
+            "visual blurring": null,
+            "Itching": null,
+            "Irritability": null,
+            "delayed healing": null,
+            "partial paresis": null,
+            "muscle stiffness": null,
+            "Alopecia": null,
+            "Obesity": null,
+          };
+          set("dataBackendRequest", JSON.parse(JSON.stringify(dataBackendRequest)))
+            .then(() => {
+              console.log(
+                "APP start - no data backend request- empty object created in indexedDB"
+              );
+            })
+            .catch(console.warn);
+        }
+        console.log("APP start - object data backend request existing in indexedDB");
+      });
+    },
+  },
+  created() {
+    this.prepareDB();
+  },
+};
+</script>
+
+
+
 <style lang="scss">
 @import "@/assets/base.css";
 
