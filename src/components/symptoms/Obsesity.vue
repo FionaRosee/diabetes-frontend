@@ -214,7 +214,6 @@ export default {
           console.dir(this.userEntiresDB);
         })
         .catch(console.warn);
-      console.log("countValidInput: ", countValidInput);
 
       if (countValidInputBMIcalc == 2) {
         // relevant data for calculation available
@@ -257,6 +256,7 @@ export default {
       else{
         this.dataBackendRequestDB.Obesity = 0;
       }
+      console.log('BMIcalc -> Obsesity: ', this.this.dataBackendRequestDB.Obesity)
     },
   },
   created() {
