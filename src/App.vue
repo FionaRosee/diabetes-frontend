@@ -1,6 +1,5 @@
 <script setup>
-import { BIconArrowRightCircleFill, BIconHouse } from "bootstrap-icons-vue";
-</script>
+import {BIconArrowLeftCircleFill, BIconHouse} from "bootstrap-icons-vue";</script>
 
 <template>
   <header>
@@ -11,7 +10,7 @@ import { BIconArrowRightCircleFill, BIconHouse } from "bootstrap-icons-vue";
       <router-link :to="{ name: 'home' }">
         <b-icon-house class="icon" />
       </router-link>
-      <b-icon-arrow-right-circle-fill class="icon" />
+      <b-icon-arrow-left-circle-fill class="icon" />
     </nav>
     <router-view />
   </main>
@@ -44,6 +43,7 @@ header {
 main {
   display: flex;
   height: 100%;
+  position: relative;
 
   nav {
     display: flex;
@@ -52,6 +52,9 @@ main {
     background: deepskyblue;
     padding: 1em;
     z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
   }
 }
 
