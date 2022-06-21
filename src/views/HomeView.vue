@@ -1,10 +1,10 @@
 <script setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 function startcheck() {
-  router.push({ name: "Polyuria" });
+  router.push({ name: "generalInformation" });
 }
 </script>
 
