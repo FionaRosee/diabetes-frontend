@@ -5,7 +5,7 @@
   >
     <div class="row my-4">
       <!-- image -->
-      <div class="image col me-5">
+      <div class="image col-4 me-5">
         <img
           src="../../assets/personal_data.png"
           class="img-fluid"
@@ -104,12 +104,15 @@
         "
       >
         <p class="text-secondary p-2">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel in
-          dignissimos nulla necessitatibus magni atque explicabo! Reprehenderit
-          perspiciatis odit, ratione voluptatibus hic excepturi a voluptatum
-          eligendi distinctio aut id suscipit!
+          <b>Thank you for using our app.</b> First of all, we need general information
+          from you. Then we ask you questions about symptoms to evaluate a
+          possible diabetes disease. The next button will take you to the next question.
+          Optionally you can also use the navigation above. If the bar is colored blue, all data is complete for this question.
+          The data is automatically saved in the browser when you leave the page and is loaded when you reopen the app. 
         </p>
+        
       </div>
+
       <!-- next button -->
 
       <div class="row mt-5">
@@ -179,35 +182,35 @@ export default {
     saveEntries() {
       let countValidInputBMIcalc = 0;
 
-    //gender
+      //gender
       if (this.gender != "") {
         this.userEntiresDB.gender = this.gender;
-        if(this.gender == "m"){
+        if (this.gender == "m") {
           this.dataBackendRequestDB.Gender = 0;
         } else {
           this.dataBackendRequestDB.Gender = 1;
         }
       }
 
-    //age
+      //age
       if (this.age != "" && !this.ageInputInvalid) {
         this.userEntiresDB.age = this.age;
-        this.dataBackendRequestDB.Age = this.age
+        this.dataBackendRequestDB.Age = this.age;
       }
-    
-    //height
+
+      //height
       if (this.height != "" && !this.heightInputInvalid) {
         this.userEntiresDB.height = this.height;
         countValidInputBMIcalc++;
       }
 
-    //weight
+      //weight
       if (this.weight != "" && !this.weightInputInvalid) {
         this.userEntiresDB.weight = this.weight;
         countValidInputBMIcalc++;
       }
 
-    //save userEntries
+      //save userEntries
       set("userEntries", JSON.parse(JSON.stringify(this.userEntiresDB)))
         .then(() => {
           console.log("User Daten gespeichert:");
@@ -220,8 +223,11 @@ export default {
         this.calculateBMI();
       }
 
-    //save data for backend request
-      set("dataBackendRequest", JSON.parse(JSON.stringify(this.dataBackendRequestDB)))
+      //save data for backend request
+      set(
+        "dataBackendRequest",
+        JSON.parse(JSON.stringify(this.dataBackendRequestDB))
+      )
         .then(() => {
           console.log("Daten Backend Anfrage gespeichert:");
           console.dir(this.dataBackendRequestDB);
@@ -250,13 +256,12 @@ export default {
     },
     calculateBMI() {
       let bmi = this.weight / (this.height / 100) ** 2;
-      if(bmi >= 30){
+      if (bmi >= 30) {
         this.dataBackendRequestDB.Obesity = 1;
-      }
-      else{
+      } else {
         this.dataBackendRequestDB.Obesity = 0;
       }
-      console.log('BMIcalc -> Obsesity: ', this.this.dataBackendRequestDB.Obesity)
+      console.log("BMIcalc -> Obsesity: ", this.dataBackendRequestDB.Obesity);
     },
   },
   created() {
