@@ -1,20 +1,20 @@
 <template>
   <div
     v-if="readyToLaunch"
-    class="form container-fluid d-flex justify-content-center"
+    class="form container-fluid d-flex justify-content-center mb-5"
   >
     <div class="row my-4">
       <!-- image -->
-      <div class="image col-4 me-5">
+      <div class="image col-4">
         <img
-          src="../../assets/personal_data.png"
+          src="../../assets/general_information.png"
           class="img-fluid"
           alt="personal data image"
         />
       </div>
 
       <!-- form -->
-      <div class="col-2 me-5 d-block">
+      <div class="col-2 ms-5 me-5 d-block">
         <!-- gender -->
         <div class="col">
           <div class="form-floating">
@@ -94,37 +94,47 @@
       <!-- description -->
       <div
         class="
+          description-box
           col
           bg-white
           d-flex
           align-items-start
           border border-light border border-3
           rounded
-          me-5
         "
       >
-        <p class="text-secondary p-2">
-          <b>Thank you for using our app.</b> First of all, we need general information
-          from you. Then we ask you questions about symptoms to evaluate a
-          possible diabetes disease. The next button will take you to the next question.
-          Optionally you can also use the navigation above. If the bar is colored blue, all data is complete for this question.
-          The data is automatically saved in the browser when you leave the page and is loaded when you reopen the app. 
-        </p>
-        
+        <div class="description-text p-2 d-block text-secondary">
+          <p>
+            <b>Thank you for using our app.</b>
+          </p>
+          <p>
+            First of all, we need general information from you. Then we ask you
+            questions about symptoms to evaluate a possible diabetes disease.
+            The next button will take you to the next question. Optionally you
+            can also use the navigation above to switch between questions. The
+            order does not matter. This makes it possible to answer questions at
+            a later point in time. If the bar is colored blue, all data is
+            complete for this question. The data is automatically saved in the
+            browser when you leave the page and is loaded when you reopen the
+            app.
+          </p>
+        </div>
       </div>
 
       <!-- next button -->
 
       <div class="row mt-5">
-        <div class="col d-flex justify-content-center mt-5">
+        <div class="col-4"></div>
+        <div class="col-2 ms-5 me-5 mt-2 d-flex justify-content-center">
           <button
             type="button"
-            class="btn btn-outline-primary rounded-pill me-5 px-5"
+            class="btn btn-outline-primary rounded-pill ms-3 px-5"
             @click="saveEntries"
           >
             Next
           </button>
         </div>
+        <div class="col"></div>
       </div>
     </div>
   </div>
