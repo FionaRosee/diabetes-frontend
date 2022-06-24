@@ -30,6 +30,7 @@ export default {
             age: "",
             height: "",
             weight: "",
+            alopecia: ""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
