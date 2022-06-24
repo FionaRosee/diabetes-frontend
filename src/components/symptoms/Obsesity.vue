@@ -25,8 +25,8 @@
               v-model="gender"
               placeholder=" "
             >
-              <option value="m">Male</option>
-              <option value="f">Female</option>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
             </select>
             <label for="gender">Gender</label>
           </div>
@@ -194,12 +194,8 @@ export default {
 
       //gender
       if (this.gender != "") {
-        this.userEntiresDB.gender = this.gender;
-        if (this.gender == "m") {
-          this.dataBackendRequestDB.Gender = 0;
-        } else {
-          this.dataBackendRequestDB.Gender = 1;
-        }
+        this.userEntiresDB.gender = parseInt(this.gender)
+        this.dataBackendRequestDB.Gender = parseInt(this.gender)
       }
 
       //age
