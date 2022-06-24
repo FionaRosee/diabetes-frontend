@@ -30,7 +30,8 @@ export default {
             age: "",
             height: "",
             weight: "",
-            alopecia: ""
+            alopecia: "",
+            muscleStiffness: ""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
@@ -50,16 +51,16 @@ export default {
             "Gender": null,
             "Polyuria": null,
             "Polydipsia": null,
-            "sudden weight loss": null,
+            "sudden_weight_loss": null,
             "weakness": null,
             "Polyphagia": null,
-            "Genital thrush": null,
+            "Genital_thrush": null,
             "visual blurring": null,
             "Itching": null,
             "Irritability": null,
-            "delayed healing": null,
-            "partial paresis": null,
-            "muscle stiffness": null,
+            "delayed_healing": null,
+            "partial_paresis": null,
+            "muscle_stiffness": null,
             "Alopecia": null,
             "Obesity": null,
           };
