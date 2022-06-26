@@ -1,7 +1,9 @@
 <template>
 <div class="main-layout container-fluid">
 <the-navigation></the-navigation>
-<muscle-stiffness></muscle-stiffness>
+<keep-alive>
+  <muscle-stiffness></muscle-stiffness>
+</keep-alive>
 </div>
 </template>
 

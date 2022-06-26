@@ -1,7 +1,9 @@
 <template>
 <div class="main-layout container-fluid">
 <the-navigation></the-navigation>
-<alopecia></alopecia>
+<keep-alive>
+  <alopecia></alopecia>
+</keep-alive>
 </div>
 </template>
 

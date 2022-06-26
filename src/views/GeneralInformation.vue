@@ -1,7 +1,9 @@
 <template>
 <div class="main-layout container-fluid">
 <the-navigation></the-navigation>
-<obsesity></obsesity>
+<keep-alive>
+  <obsesity></obsesity>
+</keep-alive>
 </div>
 </template>
 
