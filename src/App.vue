@@ -34,7 +34,8 @@ export default {
             muscleStiffness: "",
             partialParesis: "",
             delayedHealing: "",
-            irritability:""
+            irritability:"",
+            itching:""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
