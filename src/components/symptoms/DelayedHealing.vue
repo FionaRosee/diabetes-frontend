@@ -146,7 +146,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.partialParesis = data.partialParesis;
+            this.delayedHealing = data.delayedHealing;
           }
           this.userEntiresDB = data;
         })
