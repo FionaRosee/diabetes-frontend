@@ -33,7 +33,8 @@ export default {
             alopecia: "",
             muscleStiffness: "",
             partialParesis: "",
-            delayedHealing: ""
+            delayedHealing: "",
+            irritability:""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
