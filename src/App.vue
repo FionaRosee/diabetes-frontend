@@ -35,7 +35,8 @@ export default {
             partialParesis: "",
             delayedHealing: "",
             irritability:"",
-            itching:""
+            itching:"",
+            visualBlurring:""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
@@ -59,7 +60,7 @@ export default {
             "weakness": null,
             "Polyphagia": null,
             "Genital_thrush": null,
-            "visual blurring": null,
+            "visual_blurring": null,
             "Itching": null,
             "Irritability": null,
             "delayed_healing": null,

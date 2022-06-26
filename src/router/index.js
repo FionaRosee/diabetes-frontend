@@ -8,6 +8,7 @@ import QuestionPageTwelve from "../views/QuestionPageTwelve.vue"
 import QuestionPageEleven from "../views/QuestionPageEleven.vue"
 import QuestionPageTen from "../views/QuestionPageTen.vue"
 import QuestionPageNine  from "../views/QuestionPageNine.vue"
+import QuestionPageEight from "../views/QuestionPageEight.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/questionpageone",
       name: "questionpageone",
       component: QuestionPageOne,
+    },
+    {
+      path: "/question_page_eight",
+      name: "qp8",
+      component: QuestionPageEight,
     },
     {
       path: "/question_page_nine",
