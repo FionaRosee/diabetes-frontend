@@ -46,7 +46,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: -5em;
   position: relative;
 
   p {
@@ -60,6 +59,7 @@ section {
     font-size: 2.15em;
     background-color: deepskyblue;
     color: white;
+    border-radius: 30px;
 
     &:hover {
       background: hotpink;
