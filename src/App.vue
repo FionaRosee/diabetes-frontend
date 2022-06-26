@@ -32,7 +32,8 @@ export default {
             weight: "",
             alopecia: "",
             muscleStiffness: "",
-            partialParesis: ""
+            partialParesis: "",
+            delayedHealing: ""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
