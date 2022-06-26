@@ -9,7 +9,7 @@
         <img
           src="../../assets/itching.png"
           class="img-fluid"
-          alt="partial paresis image"
+          alt="itching image"
         />
       </div>
 

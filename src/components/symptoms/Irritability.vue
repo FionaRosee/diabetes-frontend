@@ -9,7 +9,7 @@
         <img
           src="../../assets/irritability.png"
           class="img-fluid"
-          alt="partial paresis image"
+          alt="irritability image"
         />
       </div>
 

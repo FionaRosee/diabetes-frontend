@@ -9,7 +9,7 @@
         <img
           src="../../assets/visual_blurring.png"
           class="img-fluid"
-          alt="alopecia image"
+          alt="visual blurring image"
         />
       </div>
 

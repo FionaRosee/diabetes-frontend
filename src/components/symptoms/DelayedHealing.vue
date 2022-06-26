@@ -9,7 +9,7 @@
         <img
           src="../../assets/delayed_healing.png"
           class="img-fluid"
-          alt="partial paresis image"
+          alt="delayed healing image"
         />
       </div>
 
