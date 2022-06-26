@@ -31,7 +31,8 @@ export default {
             height: "",
             weight: "",
             alopecia: "",
-            muscleStiffness: ""
+            muscleStiffness: "",
+            partialParesis: ""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {

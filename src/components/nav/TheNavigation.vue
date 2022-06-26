@@ -13,7 +13,7 @@
         <a class="button-unfilled m-2 rounded-pill" href="#" role="button"></a>
         <a class="button-unfilled m-2 rounded-pill" href="#" role="button"></a>
         <a class="button-unfilled m-2 rounded-pill" href="#" role="button"></a>
-        <a class="button-unfilled m-2 rounded-pill" href="#" role="button"></a>
+        <router-link class="button-unfilled m-2 rounded-pill" role="button" to="/question_page_twelve"></router-link>
         <router-link class="button-unfilled m-2 rounded-pill" role="button" to="/question_page_thirteen"></router-link>
         <router-link class="button-unfilled m-2 rounded-pill" role="button" to="/question_page_fourteen"></router-link>
       </div>
