@@ -1,20 +1,20 @@
 <template>
   <div
     v-if="readyToLaunch"
-    class="form container-fluid d-flex justify-content-center"
+    class="form container-fluid d-flex justify-content-center mb-5"
   >
     <div class="row my-4">
       <!-- image -->
-      <div class="image col me-5">
+      <div class="image col-4">
         <img
-          src="../../assets/personal_data.png"
+          src="../../assets/general_information.png"
           class="img-fluid"
           alt="personal data image"
         />
       </div>
 
       <!-- form -->
-      <div class="col-2 me-5 d-block">
+      <div class="col-2 ms-5 me-5 d-block">
         <!-- gender -->
         <div class="col">
           <div class="form-floating">
@@ -25,8 +25,8 @@
               v-model="gender"
               placeholder=" "
             >
-              <option value="m">Male</option>
-              <option value="f">Female</option>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
             </select>
             <label for="gender">Gender</label>
           </div>
@@ -94,34 +94,47 @@
       <!-- description -->
       <div
         class="
+          description-box
           col
           bg-white
           d-flex
           align-items-start
           border border-light border border-3
           rounded
-          me-5
         "
       >
-        <p class="text-secondary p-2">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel in
-          dignissimos nulla necessitatibus magni atque explicabo! Reprehenderit
-          perspiciatis odit, ratione voluptatibus hic excepturi a voluptatum
-          eligendi distinctio aut id suscipit!
-        </p>
+        <div class="description-text p-2 d-block text-secondary">
+          <p>
+            <b>Thank you for using our app.</b>
+          </p>
+          <p>
+            First of all, we need general information from you. Then we ask you
+            questions about symptoms to evaluate a possible diabetes disease.
+            The next button will take you to the next question. Optionally you
+            can also use the navigation above to switch between questions. The
+            order does not matter. This makes it possible to answer questions at
+            a later point in time. If the bar is colored blue, all data is
+            complete for this question. The data is automatically saved in the
+            browser when you leave the page and is loaded when you reopen the
+            app.
+          </p>
+        </div>
       </div>
+
       <!-- next button -->
 
       <div class="row mt-5">
-        <div class="col d-flex justify-content-center mt-5">
+        <div class="col-4"></div>
+        <div class="col-2 ms-5 me-5 mt-2 d-flex justify-content-center">
           <button
             type="button"
-            class="btn btn-outline-primary rounded-pill me-5 px-5"
+            class="btn btn-outline-primary rounded-pill ms-3 px-5"
             @click="saveEntries"
           >
             Next
           </button>
         </div>
+        <div class="col"></div>
       </div>
     </div>
   </div>
@@ -179,50 +192,48 @@ export default {
     saveEntries() {
       let countValidInputBMIcalc = 0;
 
-    //gender
+      //gender
       if (this.gender != "") {
-        this.userEntiresDB.gender = this.gender;
-        if(this.gender == "m"){
-          this.dataBackendRequestDB.Gender = 0;
-        } else {
-          this.dataBackendRequestDB.Gender = 1;
-        }
+        this.userEntiresDB.gender = parseInt(this.gender)
+        this.dataBackendRequestDB.Gender = parseInt(this.gender)
       }
 
-    //age
+      //age
       if (this.age != "" && !this.ageInputInvalid) {
         this.userEntiresDB.age = this.age;
-        this.dataBackendRequestDB.Age = this.age
+        this.dataBackendRequestDB.Age = this.age;
       }
-    
-    //height
+
+      //height
       if (this.height != "" && !this.heightInputInvalid) {
         this.userEntiresDB.height = this.height;
         countValidInputBMIcalc++;
       }
 
-    //weight
+      //weight
       if (this.weight != "" && !this.weightInputInvalid) {
         this.userEntiresDB.weight = this.weight;
         countValidInputBMIcalc++;
       }
 
-    //save userEntries
+      //save userEntries
       set("userEntries", JSON.parse(JSON.stringify(this.userEntiresDB)))
         .then(() => {
           console.log("User Daten gespeichert:");
           console.dir(this.userEntiresDB);
         })
         .catch(console.warn);
-      console.log("countValidInput: ", countValidInput);
 
       if (countValidInputBMIcalc == 2) {
         // relevant data for calculation available
         this.calculateBMI();
       }
 
-    //save data for backend request
-      set("dataBackendRequest", JSON.parse(JSON.stringify(this.dataBackendRequestDB)))
+      //save data for backend request
+      set(
+        "dataBackendRequest",
+        JSON.parse(JSON.stringify(this.dataBackendRequestDB))
+      )
         .then(() => {
           console.log("Daten Backend Anfrage gespeichert:");
           console.dir(this.dataBackendRequestDB);
@@ -251,12 +262,12 @@ export default {
     },
     calculateBMI() {
       let bmi = this.weight / (this.height / 100) ** 2;
-      if(bmi >= 30){
+      if (bmi >= 30) {
         this.dataBackendRequestDB.Obesity = 1;
-      }
-      else{
+      } else {
         this.dataBackendRequestDB.Obesity = 0;
       }
+      console.log("BMIcalc -> Obsesity: ", this.dataBackendRequestDB.Obesity);
     },
   },
   created() {

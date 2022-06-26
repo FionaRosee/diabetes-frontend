@@ -2,18 +2,18 @@
 <div class="main-layout container-fluid">
 <the-navigation></the-navigation>
 <keep-alive>
-  <obsesity></obsesity>
+  <muscle-stiffness></muscle-stiffness>
 </keep-alive>
 </div>
 </template>
 
 <script>
 import TheNavigation from '../components/nav/TheNavigation.vue'
-import Obsesity from '../components/symptoms/Obsesity.vue'
+import MuscleStiffness from '../components/symptoms/MuscleStiffness.vue'
 export default{
 components:{
   TheNavigation,
-  Obsesity
+  MuscleStiffness
 }
 }
 </script>

@@ -2,18 +2,19 @@
 <div class="main-layout container-fluid">
 <the-navigation></the-navigation>
 <keep-alive>
-  <obsesity></obsesity>
+<irritability></irritability>
 </keep-alive>
 </div>
 </template>
 
 <script>
 import TheNavigation from '../components/nav/TheNavigation.vue'
-import Obsesity from '../components/symptoms/Obsesity.vue'
+import Irritability from '../components/symptoms/Irritability.vue'
+
 export default{
 components:{
   TheNavigation,
-  Obsesity
+  Irritability
 }
 }
 </script>
