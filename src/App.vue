@@ -36,7 +36,8 @@ export default {
             delayedHealing: "",
             irritability:"",
             itching:"",
-            visualBlurring:""
+            visualBlurring:"",
+            genitalThrush:""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
