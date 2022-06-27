@@ -71,7 +71,7 @@
             class="btn btn-outline-primary rounded-pill ms-3 px-5"
             @click="saveEntries"
           >
-            Next
+            result
           </button>
         </div>
         <div class="col"></div>
@@ -95,7 +95,7 @@ export default {
     saveEntries() {
       if (this.alopecia != "") {
         this.userEntiresDB.alopecia = parseInt(this.alopecia);
-        this.dataBackendRequestDB.alopecia = parseInt(this.alopecia);
+        this.dataBackendRequestDB.Alopecia = parseInt(this.alopecia);
       }
 
       //save userEntries
