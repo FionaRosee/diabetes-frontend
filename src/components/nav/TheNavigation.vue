@@ -1,5 +1,5 @@
 <template>
-  <div v-if="readyToLaunch" class="nav container-fluid my-4 d-flex justify-content-center">
+  <div v-if="readyToLaunch" class="nav container-fluid mt-5 mb-4 d-flex justify-content-center">
     <div class="row">
       <div class="col justify-content-end">
         <router-link
