@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import QuestionPageOne from "../views/Question Page One.vue";
-import Polyuria from "../views/Polyuria.vue";
+import Polyuria from "../views/Polyuria_Page.vue";
 import GeneralInformation from "../views/GeneralInformation.vue";
 import Polydipsia from "../views/Polydipsia.vue";
 import QuestionPageFourteen from "../views/QuestionPageFourteen.vue"
@@ -9,7 +9,7 @@ import QuestionPageThirteen from "../views/QuestionPageThirteen.vue"
 import QuestionPageTwelve from "../views/QuestionPageTwelve.vue"
 import QuestionPageEleven from "../views/QuestionPageEleven.vue"
 import QuestionPageTen from "../views/QuestionPageTen.vue"
-import QuestionPageNine  from "../views/QuestionPageNine.vue"
+import QuestionPageNine from "../views/QuestionPageNine.vue"
 import QuestionPageEight from "../views/QuestionPageEight.vue"
 
 const router = createRouter({
