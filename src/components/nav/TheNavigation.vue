@@ -1,6 +1,5 @@
 <template>
-  <div class="nav container-fluid my-3 d-flex justify-content-center"></div>
-  <div class="nav container-fluid my-4 d-flex justify-content-center">
+  <div v-if="readyToLaunch" class="nav container-fluid my-4 d-flex justify-content-center">
     <div class="row">
       <div class="col justify-content-end">
         <router-link
@@ -71,7 +70,8 @@
 import { get } from "idb-keyval";
 export default {
   data() {
-    return {
+    return { 
+      readyToLaunch: false,
       dataBackendRequestDB: "",
     };
   },
@@ -181,6 +181,7 @@ export default {
       get("dataBackendRequest").then((data) => {
         if (data != null) {
           this.dataBackendRequestDB = data;
+          this.readyToLaunch = true;
           console.dir(data);
         }
       });
