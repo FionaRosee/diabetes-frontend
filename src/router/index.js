@@ -23,7 +23,7 @@ const router = createRouter({
     },
     {
       path: "/general_information",
-      name: "generalInformation",
+      name: "General information",
       component: GeneralInformation
     },
     {
@@ -43,42 +43,42 @@ const router = createRouter({
     },
     {
       path: "/question_page_seven",
-      name: "qp7",
+      name: "Genital thrush",
       component: QuestionPageSeven
     },
     {
       path: "/question_page_eight",
-      name: "qp8",
+      name: "Visual blurring",
       component: QuestionPageEight,
     },
     {
       path: "/question_page_nine",
-      name: "qp9",
+      name: "Itching",
       component: QuestionPageNine,
     },
     {
       path: "/question_page_ten",
-      name: "qp10",
+      name: "Irritability",
       component: QuestionPageTen,
     },
     {
       path: "/question_page_eleven",
-      name: "qp11",
+      name: "Delayed healing",
       component: QuestionPageEleven,
     },
     {
       path: "/question_page_twelve",
-      name: "qp12",
+      name: "Partial paresis",
       component: QuestionPageTwelve,
     },
     {
       path: "/question_page_thirteen",
-      name: "qp13",
+      name: "Muscle stiffness",
       component: QuestionPageThirteen,
     },
     {
       path: "/question_page_fourteen",
-      name: "qp14",
+      name: "Circular hair loss",
       component: QuestionPageFourteen,
     },
   ],
