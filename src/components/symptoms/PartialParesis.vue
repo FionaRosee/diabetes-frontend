@@ -79,7 +79,7 @@
           <button
             type="button"
             class="btn btn-outline-primary rounded-pill ms-3 px-5"
-            @click="saveEntries"
+            @click="this.$router.push('/question_page_thirteen')"
           >
             Next
           </button>
@@ -150,6 +150,9 @@ export default {
   created() {
     this.loadDataDB();
   },
+    beforeUnmount(){
+    this.saveEntries()
+  }
 };
 </script>
 

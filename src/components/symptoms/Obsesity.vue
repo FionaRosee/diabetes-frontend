@@ -273,6 +273,9 @@ export default {
   created() {
     this.loadDataDB();
   },
+    beforeUnmount(){
+    this.saveEntries()
+  }
 };
 </script>
 
