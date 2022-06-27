@@ -62,16 +62,15 @@
       </div>
 
       <!-- next button -->
-
       <div class="row mt-5">
         <div class="col-4"></div>
         <div class="col-2 ms-5 me-5 mt-2 d-flex justify-content-center">
           <button
             type="button"
             class="btn btn-outline-primary rounded-pill ms-3 px-5"
-            @click="saveEntries"
+            @click="validation"
           >
-            Next
+            result
           </button>
         </div>
         <div class="col"></div>
@@ -88,14 +87,14 @@ export default {
       readyToLaunch: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      alopecia: "",
+      alopecia: ""
     };
   },
   methods: {
     saveEntries() {
       if (this.alopecia != "") {
         this.userEntiresDB.alopecia = parseInt(this.alopecia);
-        this.dataBackendRequestDB.alopecia = parseInt(this.alopecia);
+        this.dataBackendRequestDB.Alopecia = parseInt(this.alopecia);
       }
 
       //save userEntries
@@ -134,9 +133,44 @@ export default {
           });
         });
     },
+    validation() {
+      this.saveEntries();
+      let valid = true;
+
+      let dataBackendRequest = {
+        Age: 35,
+        Gender: 1,
+        Polyuria: 0,
+        Polydipsia: 0,
+        sudden_weight_loss: 1,
+        weakness: 0,
+        Polyphagia: 0,
+        Genital_thrush: 0,
+        visual_blurring: 0,
+        Itching: 0,
+        Irritability: 1,
+        delayed_healing: 0,
+        partial_paresis: 0,
+        muscle_stiffness: 0,
+        Alopecia: 0,
+        Obesity: 0,
+      };
+      //nur zum Testen -> dataBackendRequest SONST this.dataBackendRequestDB
+      for (let attr in dataBackendRequest) {
+        if (dataBackendRequest[attr] == null) {
+          valid = false;
+          break;
+        }
+      }
+
+      console.log("valid: ", valid);
+    },
   },
   created() {
     this.loadDataDB();
+  },
+  beforeUnmount() {
+    this.saveEntries();
   },
 };
 </script>

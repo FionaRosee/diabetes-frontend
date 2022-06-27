@@ -1,17 +1,21 @@
 <script setup>
-import {BIconArrowLeftCircleFill, BIconHouse} from "bootstrap-icons-vue";</script>
+// import { BIconArrowLeftCircleFill, BIconHouse } from "bootstrap-icons-vue";
+</script>
 
 <template>
   <header>
-    <a href="#">Diabetes Check with Doctor Penguin</a>
+    <router-link :to="{ name: 'home' }">
+      Diabetes Check with Doctor Penguin
+    </router-link>
   </header>
   <main>
-    <nav>
+    <!-- FÜR DIE SEITLICHE NAV-BAR IST KEIN PLATZ MEHR! ÜBERSCHRIFT NUN ALS LINK ZU HOME SEITE-->
+    <!-- <nav>
       <router-link :to="{ name: 'home' }">
         <b-icon-house class="icon" />
       </router-link>
       <b-icon-arrow-left-circle-fill class="icon" />
-    </nav>
+    </nav> -->
     <router-view />
   </main>
 </template>
@@ -33,9 +37,15 @@ export default {
             muscleStiffness: "",
             partialParesis: "",
             delayedHealing: "",
-            irritability:"",
-            itching:"",
-            visualBlurring:""
+            irritability: "",
+            itching: "",
+            visualBlurring: "",
+            genitalThrush: "",
+            polyphagia: "",
+            weakness: "",
+            suddenWeightLoss: "",
+            polydipsia: "",
+            polyuria: "",
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
@@ -51,24 +61,27 @@ export default {
       get("dataBackendRequest").then((data) => {
         if (data == null) {
           let dataBackendRequest = {
-            "Age": null,
-            "Gender": null,
-            "Polyuria": null,
-            "Polydipsia": null,
-            "sudden_weight_loss": null,
-            "weakness": null,
-            "Polyphagia": null,
-            "Genital_thrush": null,
-            "visual_blurring": null,
-            "Itching": null,
-            "Irritability": null,
-            "delayed_healing": null,
-            "partial_paresis": null,
-            "muscle_stiffness": null,
-            "Alopecia": null,
-            "Obesity": null,
+            Age: null,
+            Gender: null,
+            Polyuria: null,
+            Polydipsia: null,
+            sudden_weight_loss: null,
+            weakness: null,
+            Polyphagia: null,
+            Genital_thrush: null,
+            visual_blurring: null,
+            Itching: null,
+            Irritability: null,
+            delayed_healing: null,
+            partial_paresis: null,
+            muscle_stiffness: null,
+            Alopecia: null,
+            Obesity: null,
           };
-          set("dataBackendRequest", JSON.parse(JSON.stringify(dataBackendRequest)))
+          set(
+            "dataBackendRequest",
+            JSON.parse(JSON.stringify(dataBackendRequest))
+          )
             .then(() => {
               console.log(
                 "APP start - no data backend request- empty object created in indexedDB"
@@ -76,7 +89,9 @@ export default {
             })
             .catch(console.warn);
         }
-        console.log("APP start - object data backend request existing in indexedDB");
+        console.log(
+          "APP start - object data backend request existing in indexedDB"
+        );
       });
     },
   },
@@ -100,11 +115,11 @@ export default {
 header {
   padding: 1em;
   color: white;
-  background: deepskyblue;
+  background: #4fb0e0ad;
   display: flex;
   justify-content: center;
 
-  a {
+  a,a:hover {
     color: inherit;
     text-decoration: none;
     font-size: 1.5em;
@@ -117,17 +132,17 @@ main {
   height: 100%;
   position: relative;
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: deepskyblue;
-    padding: 1em;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-  }
+  // nav {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   background: deepskyblue;
+  //   padding: 1em;
+  //   z-index: 1;
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  // }
 }
 
 section {
