@@ -36,7 +36,12 @@ export default {
             irritability:"",
             itching:"",
             visualBlurring:"",
-            genitalThrush:""
+            genitalThrush:"",
+            polyphagia:"",
+            weakness:"",
+            suddenWeightLoss:"",
+            polydipsia:"",
+            polyuria:""
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
