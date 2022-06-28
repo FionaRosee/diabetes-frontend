@@ -1,4 +1,23 @@
 <template>
+  <base-dialog
+    v-if="dialogIsVisible"
+    @close="dialogIsVisible = false"
+    :open="dialogIsVisible"
+  >
+    <p class="text-secondary">
+      The result cannot be evaluated because of unanswered questions. Please
+      check the navigation bar (gray fields).
+    </p>
+    <div class="d-flex justify-content-center">
+      <button
+        type="button"
+        class="btn btn-outline-danger rounded-pill px-4"
+        @click="dialogIsVisible = false"
+      >
+        ok
+      </button>
+    </div>
+  </base-dialog>
   <div
     v-if="readyToLaunch"
     class="form container-fluid d-flex justify-content-center mb-5"
@@ -81,13 +100,18 @@
 
 <script>
 import { get, set } from "idb-keyval";
+import BaseDialog from "../ui/BaseDialog.vue";
 export default {
+  components: {
+    BaseDialog,
+  },
   data() {
     return {
       readyToLaunch: false,
+      dialogIsVisible: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      alopecia: ""
+      alopecia: "",
     };
   },
   methods: {
@@ -135,7 +159,6 @@ export default {
     },
     validation() {
       this.saveEntries();
-      let valid = true;
 
       let dataBackendRequest = {
         Age: 35,
@@ -149,16 +172,17 @@ export default {
         visual_blurring: 0,
         Itching: 0,
         Irritability: 1,
-        delayed_healing: 0,
+        delayed_healing: null,
         partial_paresis: 0,
         muscle_stiffness: 0,
         Alopecia: 0,
         Obesity: 0,
       };
+      
       //nur zum Testen -> dataBackendRequest SONST this.dataBackendRequestDB
       for (let attr in dataBackendRequest) {
         if (dataBackendRequest[attr] == null) {
-          valid = false;
+          this.dialogIsVisible = true;
           break;
         }
       }
