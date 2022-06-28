@@ -91,8 +91,8 @@ export default {
         if (linkId == this.$route.name) {
           return { activePage: true };
         } else if (
-          this.dataBackendRequestDB.Age == null &&
-          this.dataBackendRequestDB.Gender == null &&
+          this.dataBackendRequestDB.Age == null ||
+          this.dataBackendRequestDB.Gender == null ||
           this.dataBackendRequestDB.Obesity == null
         ) {
           return { buttonUnfilled: true };
