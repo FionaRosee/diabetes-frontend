@@ -102,6 +102,7 @@
 import { get, set } from "idb-keyval";
 import BaseDialog from "../ui/BaseDialog.vue";
 export default {
+  emits:["trigger-backend-request"],
   components: {
     BaseDialog,
   },
@@ -159,7 +160,8 @@ export default {
     },
     validation() {
       this.saveEntries();
-
+      
+      let valid = false
       let dataBackendRequest = {
         Age: 35,
         Gender: 1,
@@ -172,7 +174,7 @@ export default {
         visual_blurring: 0,
         Itching: 0,
         Irritability: 1,
-        delayed_healing: null,
+        delayed_healing: 1,
         partial_paresis: 0,
         muscle_stiffness: 0,
         Alopecia: 0,
@@ -183,11 +185,15 @@ export default {
       for (let attr in dataBackendRequest) {
         if (dataBackendRequest[attr] == null) {
           this.dialogIsVisible = true;
-          break;
+          return;
         }
+          valid = true 
       }
 
-      console.log("valid: ", valid);
+      if(valid){
+          //nur zum Testen -> dataBackendRequest SONST this.dataBackendRequestDB
+        this.$emit("trigger-backend-request", dataBackendRequest);
+      }
     },
   },
   created() {
