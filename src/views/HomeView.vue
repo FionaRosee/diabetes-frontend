@@ -10,7 +10,7 @@ function startcheck() {
 
 <template>
   <section>
-    <img src="pinguin.png" alt="pinguin" />
+    <img src="../../src/assets/pinguin.png" alt="pinguin" />
     <p class="text-secondary">
       That is a diabetes check. More information incoming. Lorem ipsum dolor sit
       amet, consectetur adipisicing elit. Accusantium aperiam consectetur cum
