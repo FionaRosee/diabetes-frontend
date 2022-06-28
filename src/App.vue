@@ -105,7 +105,7 @@ export default {
 
 <style lang="scss">
 @import "@/assets/base.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,600&display=swap');
 #app {
   height: 100vh;
   display: flex;
@@ -113,6 +113,8 @@ export default {
 }
 
 header {
+ font-family: 'Roboto Serif', serif;
+  font-size: larger;
   padding: 1em;
   color: white;
   background: #4fb0e0ad;
