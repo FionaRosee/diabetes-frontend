@@ -1,3 +1,30 @@
+<template>
+  <div class="main-layout container-fluid">
+    <the-navigation></the-navigation>
+    <keep-alive>
+      <Polyuria></Polyuria>
+    </keep-alive>
+  </div>
+</template>
+
+<script>
+import TheNavigation from "../components/nav/TheNavigation.vue";
+import Polyuria from "../components/symptoms/Polyuria.vue";
+
+
+export default {
+  components: {
+    TheNavigation,
+    Polyuria,
+  },
+};
+
+</script>
+
+<style scoped>
+</style>
+
+<!--
 <script setup>
 import {useRouter} from "vue-router";
 import {ref} from "vue";
@@ -101,8 +128,11 @@ p {
 }
 
 .red {
-  --slider-connect-bg: red;
-  --slider-tooltip-bg: red;
-  --slider-handle-shadow-active: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.42);
+  &#45;&#45;slider-connect-bg: red;
+  &#45;&#45;slider-tooltip-bg: red;
+  &#45;&#45;slider-handle-shadow-active: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.42);
 }
 </style>
+
+-->
+

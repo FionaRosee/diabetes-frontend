@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import QuestionPageOne from "../views/Question Page One.vue";
-import Polyuria from "../views/Polyuria.vue";
+import Polyuria from "../views/Polyuria_Page.vue";
 import GeneralInformation from "../views/GeneralInformation.vue";
 import Polydipsia from "../views/Polydipsia.vue";
 import QuestionPageFourteen from "../views/QuestionPageFourteen.vue"
@@ -12,7 +12,6 @@ import QuestionPageTen from "../views/QuestionPageTen.vue"
 import QuestionPageNine from "../views/QuestionPageNine.vue"
 import QuestionPageEight from "../views/QuestionPageEight.vue"
 import QuestionPageSeven from "../views/QuestionPageSeven.vue"
-import QuestionPageSix from "../views/QuestionPageSix.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,11 +40,6 @@ const router = createRouter({
       path: "/Polydipsia",
       name: "Polydipsia",
       component: Polydipsia,
-    },
-    {
-      path: "/question_page_six",
-      name: "Polyphagia",
-      component: QuestionPageSix
     },
     {
       path: "/question_page_seven",
