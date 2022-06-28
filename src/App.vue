@@ -105,7 +105,6 @@ export default {
 
 <style lang="scss">
 @import "@/assets/base.css";
-
 #app {
   height: 100vh;
   display: flex;

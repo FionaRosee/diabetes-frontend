@@ -1,5 +1,8 @@
 <template>
-  <div v-if="readyToLaunch" class="nav container-fluid mt-5 mb-4 d-flex justify-content-center">
+  <div
+    v-if="readyToLaunch"
+    class="nav container-fluid mt-5 mb-4 d-flex justify-content-center"
+  >
     <div class="row">
       <div class="col justify-content-end">
         <router-link
@@ -12,7 +15,12 @@
         <a class="buttonFilled m-2 rounded-pill" href="#" role="button"></a>
         <a class="buttonFilled m-2 rounded-pill" href="#" role="button"></a>
         <a class="buttonUnfilled m-2 rounded-pill" href="#" role="button"></a>
-        <a class="buttonnfilled m-2 rounded-pill" href="#" role="button"></a>
+        <router-link
+          :class="mode('Polyphagia')"
+          class="m-2 rounded-pill"
+          role="button"
+          to="/question_page_six"
+        ></router-link>
         <router-link
           :class="mode('Genital thrush')"
           class="m-2 rounded-pill"
@@ -70,7 +78,7 @@
 import { get } from "idb-keyval";
 export default {
   data() {
-    return { 
+    return {
       readyToLaunch: false,
       dataBackendRequestDB: "",
     };
@@ -82,7 +90,23 @@ export default {
       if (linkId == "General information") {
         if (linkId == this.$route.name) {
           return { activePage: true };
-        } else if (this.dataBackendRequestDB.Age == null  && this.dataBackendRequestDB.Gender == null && this.dataBackendRequestDB.Obesity == null) {
+        } else if (
+          this.dataBackendRequestDB.Age == null &&
+          this.dataBackendRequestDB.Gender == null &&
+          this.dataBackendRequestDB.Obesity == null
+        ) {
+          return { buttonUnfilled: true };
+        } else {
+          return { buttonFilled: true };
+        }
+      }
+
+      //Polyphagia
+
+      if (linkId == "Polyphagia") {
+        if (linkId == this.$route.name) {
+          return { activePage: true };
+        } else if (this.dataBackendRequestDB.Polyphagia == null) {
           return { buttonUnfilled: true };
         } else {
           return { buttonFilled: true };

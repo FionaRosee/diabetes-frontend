@@ -1,23 +1,4 @@
 <template>
-  <base-dialog
-    v-if="dialogIsVisible"
-    @close="dialogIsVisible = false"
-    :open="dialogIsVisible"
-  >
-    <p class="text-secondary">
-      The result cannot be evaluated because of unanswered questions. Please
-      check the navigation bar (gray fields).
-    </p>
-    <div class="d-flex justify-content-center">
-      <button
-        type="button"
-        class="btn btn-outline-danger rounded-pill px-4"
-        @click="dialogIsVisible = false"
-      >
-        ok
-      </button>
-    </div>
-  </base-dialog>
   <div
     v-if="readyToLaunch"
     class="form container-fluid d-flex justify-content-center mb-5"
@@ -26,28 +7,28 @@
       <!-- image -->
       <div class="image col-4">
         <img
-          src="../../assets/alopecia.png"
+          src="../../assets/polyphagia.png"
           class="img-fluid"
-          alt="alopecia image"
+          alt="polyphagia image"
         />
       </div>
 
       <!-- form -->
       <div class="col-2 ms-5 me-5 d-block">
-        <!-- alopecia -->
+        <!-- polyphagia -->
         <div class="col">
           <div class="form-floating">
             <select
               class="form-select"
-              id="alopecia"
+              id="polyphagia"
               aria-label="Floating label select example"
-              v-model="alopecia"
+              v-model="polyphagia"
               placeholder=" "
             >
               <option value="1">yes</option>
               <option value="0">no</option>
             </select>
-            <label for="alopecia">Circular hair loss</label>
+            <label for="polyphagia">Polyphagia</label>
           </div>
         </div>
         <!-- end of form -->
@@ -67,29 +48,44 @@
       >
         <div class="description-text p-2 d-block text-secondary">
           <p>
-            <b>Circular hair loss</b>
+            <b>Polyphagia</b>
           </p>
           <p>
-            Symptoms of alopecia areata: Mostly round bald spots. In the case of
-            circular hair loss, individual round bald spots usually form
-            relatively quickly or also in phases: in the hair of the head, less
-            frequently in the beard, in the face or in the body hair. At the
-            edge of the hairless areas there are usually short, broken hairs,
-            so-called "comma" hairs. Towards the skin pores they are thinner.
+            Polyphagia describes excessive hunger. Although we may all feel an
+            increase in appetite in certain situations, such as after exercise
+            or if we haven’t eaten in awhile, sometimes it can be a sign of an
+            underlying condition. In people with diabetes, glucose can’t enter
+            cells to be used for energy. This can be due to either low insulin
+            levels or insulin resistance. Because your body can’t convert this
+            glucose to energy, you’ll begin to feel very hungry. The hunger
+            associated with polyphagia doesn’t go away after consuming food. In
+            fact, in people with unmanaged diabetes, eating more will just
+            contribute to already high blood glucose levels.
           </p>
+          <p>
+            Other things can cause polyphagia as well. Some examples
+            include: 
+          </p>
+          <ul>
+            <li>an overactive thyroid, or hyperthyroidism</li>
+            <li>premenstrual syndrome (PMS)</li>
+            <li>stress</li>
+            <li>taking certain medications, such as corticosteroids</li>
+          </ul>
         </div>
       </div>
 
       <!-- next button -->
+
       <div class="row mt-5">
         <div class="col-4"></div>
         <div class="col-2 ms-5 me-5 mt-2 d-flex justify-content-center">
           <button
             type="button"
             class="btn btn-outline-primary rounded-pill ms-3 px-5"
-            @click="validation"
+            @click="this.$router.push('/question_page_seven')"
           >
-            result
+            Next
           </button>
         </div>
         <div class="col"></div>
@@ -100,25 +96,20 @@
 
 <script>
 import { get, set } from "idb-keyval";
-import BaseDialog from "../ui/BaseDialog.vue";
 export default {
-  components: {
-    BaseDialog,
-  },
   data() {
     return {
       readyToLaunch: false,
-      dialogIsVisible: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      alopecia: "",
+      polyphagia: "",
     };
   },
   methods: {
     saveEntries() {
       if (this.alopecia != "") {
-        this.userEntiresDB.alopecia = parseInt(this.alopecia);
-        this.dataBackendRequestDB.Alopecia = parseInt(this.alopecia);
+        this.userEntiresDB.polyphagia = parseInt(this.polyphagia);
+        this.dataBackendRequestDB.Polyphagia = parseInt(this.polyphagia);
       }
 
       //save userEntries
@@ -144,7 +135,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.alopecia = data.alopecia;
+            this.polyphagia = data.polyphagia;
           }
           this.userEntiresDB = data;
         })
@@ -156,38 +147,6 @@ export default {
             }
           });
         });
-    },
-    validation() {
-      this.saveEntries();
-
-      let dataBackendRequest = {
-        Age: 35,
-        Gender: 1,
-        Polyuria: 0,
-        Polydipsia: 0,
-        sudden_weight_loss: 1,
-        weakness: 0,
-        Polyphagia: 0,
-        Genital_thrush: 0,
-        visual_blurring: 0,
-        Itching: 0,
-        Irritability: 1,
-        delayed_healing: null,
-        partial_paresis: 0,
-        muscle_stiffness: 0,
-        Alopecia: 0,
-        Obesity: 0,
-      };
-      
-      //nur zum Testen -> dataBackendRequest SONST this.dataBackendRequestDB
-      for (let attr in dataBackendRequest) {
-        if (dataBackendRequest[attr] == null) {
-          this.dialogIsVisible = true;
-          break;
-        }
-      }
-
-      console.log("valid: ", valid);
     },
   },
   created() {
