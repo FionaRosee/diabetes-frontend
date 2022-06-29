@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     async sendRequest() {
+
       try {
         const response = await fetch(
           "https://diabetes-app-flask-backend.herokuapp.com/",
@@ -58,22 +59,22 @@ export default {
             },
             body: JSON.stringify({
               //POST request payload
-              Age: 35,
-              Gender: 0,
-              Polyuria: 0,
-              Polydipsia: 0,
-              "sudden weight loss": 1,
-              weakness: 1,
-              Polyphagia: 0,
-              "Genital thrush": 0,
-              "visual blurring": 0,
-              Itching: 0,
-              Irritability: 0,
-              "delayed healing": 0,
-              "partial paresis": 0,
-              "muscle stiffness": 0,
-              Alopecia: 0,
-              Obesity: 0,
+              Age: this.dataBackendRequest.age_group,
+              Gender: this.dataBackendRequest.Gender,
+              Polyuria: this.dataBackendRequest.Polyuria,
+              Polydipsia: this.dataBackendRequest.Polydipsia,
+              "sudden weight loss": this.dataBackendRequest.sudden_weight_loss,
+              weakness: this.dataBackendRequest.weakness,
+              Polyphagia: this.dataBackendRequest.Polyphagia,
+              "Genital thrush": this.dataBackendRequest.Genital_thrush,
+              "visual blurring": this.dataBackendRequest.visual_blurring,
+              Itching: this.dataBackendRequest.Itching,
+              Irritability: this.dataBackendRequest.Irritability,
+              "delayed healing": this.dataBackendRequest.delayed_healing,
+              "partial paresis": this.dataBackendRequest.partial_paresis,
+              "muscle stiffness": this.dataBackendRequest.muscle_stiffness,
+              Alopecia: this.dataBackendRequest.Alopecia,
+              Obesity: this.dataBackendRequest.Obesity,
             }),
           }
         );
