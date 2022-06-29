@@ -61,7 +61,7 @@ export default {
       get("dataBackendRequest").then((data) => {
         if (data == null) {
           let dataBackendRequest = {
-            Age: null,
+            age_group: null,
             Gender: null,
             Polyuria: null,
             Polydipsia: null,

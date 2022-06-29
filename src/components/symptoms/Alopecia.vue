@@ -163,18 +163,18 @@ export default {
       
       let valid = false
       let dataBackendRequest = {
-        Age: 35,
-        Gender: 1,
+        age_group: 0,
+        Gender: 0,
         Polyuria: 0,
         Polydipsia: 0,
-        sudden_weight_loss: 1,
+        sudden_weight_loss: 0,
         weakness: 0,
         Polyphagia: 0,
         Genital_thrush: 0,
         visual_blurring: 0,
         Itching: 0,
-        Irritability: 1,
-        delayed_healing: 1,
+        Irritability: 0,
+        delayed_healing: 0,
         partial_paresis: 0,
         muscle_stiffness: 0,
         Alopecia: 0,

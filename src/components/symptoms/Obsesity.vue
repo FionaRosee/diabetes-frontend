@@ -194,14 +194,26 @@ export default {
 
       //gender
       if (this.gender != "") {
-        this.userEntiresDB.gender = parseInt(this.gender)
-        this.dataBackendRequestDB.Gender = parseInt(this.gender)
+        this.userEntiresDB.gender = parseInt(this.gender);
+        this.dataBackendRequestDB.Gender = parseInt(this.gender);
       }
 
       //age
       if (this.age != "" && !this.ageInputInvalid) {
         this.userEntiresDB.age = this.age;
-        this.dataBackendRequestDB.Age = this.age;
+        // convert to age group for backend-request
+        // 1-39 -> 0
+        // 40-59 -> 1
+        // > 60 -> 2
+
+        if (this.age < 40) {
+          this.dataBackendRequestDB.age_group = 0;
+        } else if (this.age < 60) {
+          this.dataBackendRequestDB.age_group = 1;
+        }
+        else{
+          this.dataBackendRequestDB.age_group = 2;
+        }
       }
 
       //height
@@ -273,9 +285,9 @@ export default {
   created() {
     this.loadDataDB();
   },
-    beforeUnmount(){
-    this.saveEntries()
-  }
+  beforeUnmount() {
+    this.saveEntries();
+  },
 };
 </script>
 
