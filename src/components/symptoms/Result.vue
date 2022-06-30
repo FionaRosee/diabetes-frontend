@@ -57,6 +57,7 @@
 <script>
 import BaseSpinnerDialog from "../ui/BaseSpinnerDialog.vue";
 import BaseSpinner from "../ui/BaseSpinner.vue";
+import { set } from "idb-keyval";
 export default {
   props: ["dataBackendRequest"],
   components: {
@@ -107,10 +108,65 @@ export default {
         setTimeout(() => {
           this.showSpinner = false;
           this.loading = false;
+          this.resetData();
         }, 2000);
       } catch (error) {
         console.log(error);
       }
+    },
+    resetData() {
+
+      let userEntries = {
+        gender: "",
+        age: "",
+        height: "",
+        weight: "",
+        alopecia: "",
+        muscleStiffness: "",
+        partialParesis: "",
+        delayedHealing: "",
+        irritability: "",
+        itching: "",
+        visualBlurring: "",
+        genitalThrush: "",
+        polyphagia: "",
+        weakness: "",
+        suddenWeightLoss: "",
+        polydipsia: "",
+        polyuria: "",
+      };
+
+      set("userEntries", JSON.parse(JSON.stringify(userEntries)))
+        .then(() => {
+          console.log("indexedDB user entries reseted!");
+        })
+        .catch(console.warn);
+
+      let dataBackendRequest = {
+        age_group: null,
+        Gender: null,
+        Polyuria: null,
+        Polydipsia: null,
+        sudden_weight_loss: null,
+        weakness: null,
+        Polyphagia: null,
+        Genital_thrush: null,
+        visual_blurring: null,
+        Itching: null,
+        Irritability: null,
+        delayed_healing: null,
+        partial_paresis: null,
+        muscle_stiffness: null,
+        Alopecia: null,
+        Obesity: null,
+      };
+      set("dataBackendRequest", JSON.parse(JSON.stringify(dataBackendRequest)))
+        .then(() => {
+          console.log(
+            "indexedDB data backend request reseted!"
+          );
+        })
+        .catch(console.warn);
     },
   },
   created() {
