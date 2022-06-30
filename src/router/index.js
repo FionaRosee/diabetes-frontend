@@ -13,6 +13,7 @@ import QuestionPageNine from "../views/QuestionPageNine.vue"
 import QuestionPageEight from "../views/QuestionPageEight.vue"
 import QuestionPageSeven from "../views/QuestionPageSeven.vue"
 import QuestionPageSix from "../views/QuestionPageSix.vue"
+import NotFoundPage from "../views/NotFoundPage.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -87,6 +88,7 @@ const router = createRouter({
       name: "Circular hair loss",
       component: QuestionPageFourteen,
     },
+    {path:'/:notFound(.*)',component:NotFoundPage} 
   ],
 });
 
