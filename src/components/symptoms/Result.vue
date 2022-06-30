@@ -10,21 +10,45 @@
         alt="evaluation image"
       />
     </div>
-    <div v-if="!loading" class="col-4"></div>
-    <div v-if="!loading" class="image col-4">
+
+    <div v-if="!loading && responseData != null" class="col-4"></div>
+    <div v-if="!loading && responseData != null" class="image col-4">
       <img
         src="../../assets/result.png"
         class="img-fluid"
         alt="evaluation image"
       />
     </div>
-    <div v-if="!loading" class="result-text col-4 p-2 d-block text-secondary">
-      <p>
+    <div
+      v-if="!loading && responseData != null"
+      class="result-text col-4 p-2 d-block text-secondary"
+    >
+      <p class="h4">
         <b>Result</b>
       </p>
-      <p>
-        According to our calculation ...
-        {{ response }}
+      <p v-if="responseData.result == 1">
+        According to our machine learning algorithm, you
+        <i><b>have diabetes</b></i> with a probability of
+        <i
+          ><b>{{ (responseData.predictProba1 * 100).toFixed(2) }}%</b></i
+        >. Please get checked by a doctor.
+      </p>
+
+      <p v-else-if="responseData.predictProba0 < 0.9">
+        According to our machine learning algorithm, you
+        <i><b>don't have</b></i> diabetes with a probability of
+        <i
+          ><b>{{ (responseData.predictProba0 * 100).toFixed(2) }}%</b></i
+        >
+        but still get checked by a doctor.
+      </p>
+
+      <p v-else>
+        According to our machine learning algorithm, you
+        <i><b>don't have</b></i> diabetes with a probability of
+        <i
+          ><b>{{ (responseData.predictProba0 * 100).toFixed(2) }}%</b></i
+        >.
       </p>
     </div>
   </div>
@@ -43,12 +67,12 @@ export default {
     return {
       showSpinner: true,
       loading: true,
-      response: "",
+      showResult: false,
+      responseData: null,
     };
   },
   methods: {
     async sendRequest() {
-
       try {
         const response = await fetch(
           "https://diabetes-app-flask-backend.herokuapp.com/",
@@ -79,13 +103,11 @@ export default {
           }
         );
         const data = await response.json();
-        // request successfull
+        this.responseData = data;
         setTimeout(() => {
-        this.showSpinner = false;
-        this.loading = false;
-        this.response = data;
-        console.log(data);
-        }, 3000);
+          this.showSpinner = false;
+          this.loading = false;
+        }, 2000);
       } catch (error) {
         console.log(error);
       }

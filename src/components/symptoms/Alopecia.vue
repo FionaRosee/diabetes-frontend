@@ -163,7 +163,7 @@ export default {
       
       let valid = false
       let dataBackendRequest = {
-        age_group: 0,
+        age_group: 1,
         Gender: 0,
         Polyuria: 0,
         Polydipsia: 0,
