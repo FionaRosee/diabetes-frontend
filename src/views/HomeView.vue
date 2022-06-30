@@ -12,11 +12,12 @@ function startcheck() {
   <section>
     <img src="../../src/assets/pinguin.png" alt="pinguin" />
     <p class="text-secondary">
-      That is a diabetes check. More information incoming. Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Accusantium aperiam consectetur cum
-      ducimus eius eligendi est, eveniet exercitationem itaque, magnam maiores
-      minus necessitatibus nihil quo reiciendis tempora voluptate, voluptates?
-      Quis?
+      <b>Welcome to our diabetes check app.</b>
+
+      With the help of our machine learning algorithm, we calculate the
+      probability of a diabetes disease. To do so, we need personal information
+      from you and details on symptoms that typically occur with it.
+      Our goal is to identify a potential diabetes disease at an early stage, in order to start a medication as soon as possible.
     </p>
     <div class="same">
       <!-- <div class="form-floating mb-3">
@@ -28,7 +29,11 @@ function startcheck() {
         />
         <label for="floatingInput">Name</label>
       </div> -->
-      <button @click="startcheck" type="button" class="btn btn-outline-primary rounded-pill mt-5 px-5">
+      <button
+        @click="startcheck"
+        type="button"
+        class="btn btn-outline-primary rounded-pill mt-5 px-5"
+      >
         Start the check
       </button>
     </div>
@@ -68,16 +73,16 @@ section {
   // }
 
   .btn-outline-primary {
-  border-color: #4fb0e0ad;
-  color: #4fb0e0ad;
-  font-weight: bold;
-}
+    border-color: #4fb0e0ad;
+    color: #4fb0e0ad;
+    font-weight: bold;
+  }
 
-.btn-outline-primary:hover {
-  border-color: #4fb0e0;
-  background-color: #4fb0e0;
-  color:white
-}
+  .btn-outline-primary:hover {
+    border-color: #4fb0e0;
+    background-color: #4fb0e0;
+    color: white;
+  }
 
   .same {
     margin-top: 1em;
