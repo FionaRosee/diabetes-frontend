@@ -10,12 +10,14 @@
 <script>
 import TheNavigation from "../components/nav/TheNavigation.vue";
 import Polyuria from "../components/symptoms/Polyuria.vue";
+import ButtonsHome from "../components/nav/ButtonsHome.vue";
 
 
 export default {
   components: {
     TheNavigation,
     Polyuria,
+    ButtonsHome,
   },
 };
 

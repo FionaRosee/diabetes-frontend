@@ -75,7 +75,8 @@
 </template>
 
 <script>
-import { get } from "idb-keyval";
+import {get} from "idb-keyval";
+
 export default {
   data() {
     return {

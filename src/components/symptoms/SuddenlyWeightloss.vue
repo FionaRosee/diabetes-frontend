@@ -7,27 +7,19 @@
       <!-- image -->
       <div class="image col-4">
         <img
-          src="../../assets/polyuria.png"
+          src="../../assets/suddenly_weightloss.png"
           class="img-fluid"
           alt="alopecia image"
         />
       </div>
-      <div
-        class="col-2 ms-5 me-5 d-flex flex-column justify-content-center align-items-center"
-      >
-        <!-- slider -->
-        <vue-slider
-          id="slider"
-          v-model="polyuria"
-          :min="0"
-          :max="15"
-          ref="sliderObject"
-          orientation="vertical"
-          direction="rtl"
-          @update="changeSlider"
-          :lazy="false"
-        />
-        <!-- end of slider -->
+      <div class="col-2 ms-5 me-5 d-block">
+        <!-- fat to thin-->
+        <label for="weightloss">Weightloss:</label>
+        <select name="weightloss" id="weightloss" v-model="suddenly">
+          <option value="yes">more than 10 pounds</option>
+          <option value="no">less than 10 pounds</option>
+        </select>
+        <!-- fat to thin end -->
       </div>
       <!-- description -->
       <div
@@ -35,18 +27,24 @@
       >
         <div class="description-text p-2 d-block text-secondary">
           <p>
-            <b>Polyuria</b>
+            <b>Suddenly Weightloss</b>
           </p>
           <p>
-            Do you always have to go? If you have a condition called polyuria,
-            it’s because your body makes more pee than normal. Adults usually
-            make about 3 liters of urine per day. But with polyuria, you could
-            make up to 15 liters per day. Polyuria is often one of the first
-            signs of diabetes. The condition makes sugar build up in your
-            bloodstream. If your kidneys aren’t able to filter it out, it exits
-            your body in your urine. As the extra sugar and fluids travel
-            through your kidneys, you have to pee more. Plus, the more you go,
-            the thirstier you feel, and the more you’ll drink.
+            In many cases, we can afford to gain or lose a pound or two. It’s
+            normal to indulge a little too much (especially around the holidays)
+            and then work to get in some extra exercise time in our schedules.
+            It’s also normal to lose a couple of pounds when battling an
+            illness; once we feel better, we can start eating normally again and
+            regain the weight. One aspect of weight that’s not normal, however,
+            is if you’re experiencing a major drop in pounds without any major
+            diet or exercise changes. If this severe and unexpected weight loss
+            is taking place, talk to your healthcare provider immediately. While
+            weight loss of just a pound or two isn’t a reason for concern,
+            unexplained weight loss of 10 pounds or more may mean something is
+            wrong and that your body is trying to tell you something.
+            Ultimately, this dramatic weight loss could be an early sign of
+            diabetes.
+            Source:https://health.clevelandclinic.org/what-you-should-know-about-unexplained-weight-loss-and-diabetes/
           </p>
         </div>
       </div>
@@ -58,7 +56,7 @@
         <div class="col-2 ms-5 me-5 mt-2 d-flex justify-content-center">
           <button
             type="button"
-            class="btn btn-outline-primary rounded-pill ms-3 px-5 mt-0 mb-5"
+            class="btn btn-outline-primary rounded-pill ms-3 px-5"
             @click="saveEntries"
           >
             Next
@@ -72,27 +70,22 @@
 
 <script>
 import { get, set } from "idb-keyval";
-import VueSlider from "@vueform/slider";
-import "@vueform/slider/themes/default.css";
 
 export default {
-  components: { VueSlider },
   data() {
     return {
       readyToLaunch: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      visualBlurring: "",
-      polyuria: 0,
-      isOverLimit: false,
+      suddenly: "",
     };
   },
   methods: {
     saveEntries() {
-      if (this.polyuria !== "") {
-        const polyuria = parseInt(this.polyuria) > 3 ? 1 : 0;
-        this.userEntiresDB.polyuria = polyuria;
-        this.dataBackendRequestDB.polyuria = polyuria;
+      if (this.suddenly !== "") {
+        const weightloss = this.suddenly === "yes" ? 1 : 0;
+        this.userEntiresDB.suddenly = weightloss;
+        this.dataBackendRequestDB.polydipsia = weightloss;
       }
 
       //save userEntries
@@ -118,7 +111,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.polyuria = data.polyuria ?? 0;
+            this.suddenly = data.suddenly ?? "";
           }
           this.userEntiresDB = data;
         })
@@ -130,13 +123,6 @@ export default {
             }
           });
         });
-    },
-    changeSlider(newValue) {
-      if (newValue > 3) {
-        this.$refs.sliderObject.$el.classList.add("red");
-      } else {
-        this.$refs.sliderObject.$el.classList.remove("red");
-      }
     },
   },
   created() {
@@ -150,23 +136,11 @@ export default {
   border-color: #4fb0e0ad;
   color: #4fb0e0ad;
   font-weight: bold;
-  margin-bottom: 5em;
 }
 
 .btn-outline-primary:hover {
   border-color: #4fb0e0;
   background-color: #4fb0e0;
-  margin-bottom: 5em;
-}
-
-#slider {
-  height: 100%;
-  margin-block: 3em;
-}
-
-.red {
-  --slider-connect-bg: red;
-  --slider-tooltip-bg: red;
-  --slider-handle-shadow-active: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.42);
 }
 </style>
+>

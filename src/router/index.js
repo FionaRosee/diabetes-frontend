@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import QuestionPageOne from "../views/Question Page One.vue";
 import Polyuria from "../views/Polyuria_Page.vue";
 import GeneralInformation from "../views/GeneralInformation.vue";
-import Polydipsia from "../views/Polydipsia.vue";
+import Polydipsia from "../views/Polydipsia_Page.vue";
 import QuestionPageFourteen from "../views/QuestionPageFourteen.vue"
 import QuestionPageThirteen from "../views/QuestionPageThirteen.vue"
 import QuestionPageTwelve from "../views/QuestionPageTwelve.vue"
@@ -12,6 +12,8 @@ import QuestionPageTen from "../views/QuestionPageTen.vue"
 import QuestionPageNine from "../views/QuestionPageNine.vue"
 import QuestionPageEight from "../views/QuestionPageEight.vue"
 import QuestionPageSeven from "../views/QuestionPageSeven.vue"
+import Weakness_Page from "../views/Weakness_Page.vue";
+import SuddenlyWeightloss_Page from "../views/SuddenlyWeightloss_Page.vue";
 import QuestionPageSix from "../views/QuestionPageSix.vue"
 import NotFoundPage from "../views/NotFoundPage.vue"
 
@@ -88,7 +90,17 @@ const router = createRouter({
       name: "Circular hair loss",
       component: QuestionPageFourteen,
     },
-    {path:'/:notFound(.*)',component:NotFoundPage} 
+    {
+      path: "/weakness_page",
+      name: "Weakness",
+      component: Weakness_Page,
+    },
+    {
+      path: "/suddenlyWeightloss_page",
+      name: "Suddenly Weightloss",
+      component: SuddenlyWeightloss_Page,
+    },
+    {path:'/:notFound(.*)',component:NotFoundPage}
   ],
 });
 

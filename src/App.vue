@@ -1,5 +1,5 @@
 <script setup>
-// import { BIconArrowLeftCircleFill, BIconHouse } from "bootstrap-icons-vue";
+
 </script>
 
 <template>
@@ -9,6 +9,7 @@
     </router-link>
   </header>
   <main>
+    <i class="bi bi-house-heart"></i>
     <!-- FÜR DIE SEITLICHE NAV-BAR IST KEIN PLATZ MEHR! ÜBERSCHRIFT NUN ALS LINK ZU HOME SEITE-->
     <!-- <nav>
       <router-link :to="{ name: 'home' }">
@@ -21,7 +22,8 @@
 </template>
 
 <script>
-import { get, set } from "idb-keyval";
+import {get, set} from "idb-keyval";
+
 export default {
   methods: {
     prepareDB() {
