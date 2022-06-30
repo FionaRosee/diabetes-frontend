@@ -5,7 +5,7 @@
 <template>
   <header>
     <router-link :to="{ name: 'home' }">
-      Diabetes Check with Doctor Penguin
+      Diabetes Check App
     </router-link>
   </header>
   <main>
@@ -112,7 +112,7 @@ export default {
 }
 
 header {
-  padding: 1em;
+  padding: 0.5em;
   color: white;
   background: #4fb0e0ad;
   display: flex;

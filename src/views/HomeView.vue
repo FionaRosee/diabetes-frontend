@@ -10,7 +10,7 @@ function startcheck() {
 
 <template>
   <section>
-    <img src="../../src/assets/pinguin.png" alt="pinguin" />
+    <img src="../../src/assets/Doc.png" alt="pinguin" />
     <p class="text-secondary">
       <b>Welcome to our diabetes check app.</b>
 
@@ -43,7 +43,7 @@ function startcheck() {
 <style scoped lang="scss">
 img {
   clip-path: circle();
-  height: 18em;
+  height: 22em;
 }
 
 section {
