@@ -127,9 +127,8 @@ export default {
       this.weakness = buttonId;
     },
     saveEntries() {
-      const weakness = parseInt(this.weakness) > 1 ? 0 : 1;
-      this.userEntiresDB.weakness = weakness;
-      this.dataBackendRequestDB.polydipsia = weakness;
+      this.userEntiresDB.weakness = this.weakness;
+      this.dataBackendRequestDB.weakness = this.weakness > 1 ? 0 : 1;
 
       //save userEntries
       set("userEntries", JSON.parse(JSON.stringify(this.userEntiresDB)))
@@ -154,7 +153,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.weakness = data.weakness ?? 3;
+            this.weakness = data.weakness;
           }
           this.userEntiresDB = data;
         })
@@ -170,6 +169,11 @@ export default {
   },
   created() {
     this.loadDataDB();
+  },
+  watch: {
+    readyToLaunch() {
+      this.$nextTick(() => this.select(this.weakness));
+    },
   },
 };
 </script>

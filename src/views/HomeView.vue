@@ -1,10 +1,21 @@
 <script setup>
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 
 const router = useRouter();
 
 function startcheck() {
   router.push({ name: "General information" });
+}
+
+const inputRef = ref();
+const emit = defineEmits(["setName"]);
+
+function save() {
+  const inputElement = inputRef.value;
+  const name = inputElement.value;
+  localStorage.setItem("name", name);
+  emit("setName", name);
 }
 </script>
 
@@ -16,21 +27,28 @@ function startcheck() {
 
       With the help of our machine learning algorithm, we calculate the
       probability of a diabetes disease. To do so, we need personal information
-      from you and details on symptoms that typically occur with it.
-      Our goal is to identify a potential diabetes disease at an early stage, in order to start a medication as soon as possible.
+      from you and details on symptoms that typically occur with it. Our goal is
+      to identify a potential diabetes disease at an early stage, in order to
+      start a medication as soon as possible.
     </p>
     <div class="same">
-      <!-- <div class="form-floating mb-3">
+      <div class="form-floating mb-3">
         <input
+          ref="inputRef"
           type="text"
           class="form-control"
           id="floatingInput"
           placeholder="text"
         />
         <label for="floatingInput">Name</label>
-      </div> -->
+      </div>
       <button
-        @click="startcheck"
+        @click="
+          () => {
+            startcheck();
+            save();
+          }
+        "
         type="button"
         class="btn btn-outline-primary rounded-pill mt-5 px-5"
       >
@@ -88,6 +106,11 @@ section {
     margin-top: 1em;
     display: flex;
     flex-direction: column;
+  }
+
+  .img {
+    width: 10em;
+    height: 1000%;
   }
 }
 </style>

@@ -21,7 +21,7 @@
           name="water"
           id="water-yes"
           value="1"
-          v-model="polydipsia"
+          v-model.number="polydipsia"
         />
         <label for="water-yes">
           <img src="../../assets/waterbottle_yes.png" alt="water bottle" />
@@ -32,8 +32,7 @@
           name="water"
           id="water-no"
           value="0"
-          v-model="polydipsia"
-          checked
+          v-model.number="polydipsia"
         />
         <label for="water-no">
           <img src="../../assets/waterbottle_no.png" alt="water bottle" />
@@ -95,12 +94,12 @@ export default {
       readyToLaunch: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      polydipsia: false,
+      polydipsia: 0,
     };
   },
   methods: {
     saveEntries() {
-      const polydipsia = parseInt(this.polydipsia);
+      const polydipsia = this.polydipsia;
       this.userEntiresDB.polydipsia = polydipsia;
       this.dataBackendRequestDB.polydipsia = polydipsia;
 
@@ -127,7 +126,8 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.polydipsia = data.polydipsia ?? 0;
+            console.log(data);
+            this.polydipsia = data.polydipsia;
           }
           this.userEntiresDB = data;
         })

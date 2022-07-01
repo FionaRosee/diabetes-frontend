@@ -84,8 +84,8 @@ export default {
     saveEntries() {
       if (this.suddenly !== "") {
         const weightloss = this.suddenly === "yes" ? 1 : 0;
-        this.userEntiresDB.suddenly = weightloss;
-        this.dataBackendRequestDB.polydipsia = weightloss;
+        this.userEntiresDB.suddenWeightLoss = this.suddenly;
+        this.dataBackendRequestDB.sudden_weight_loss = weightloss;
       }
 
       //save userEntries
@@ -111,7 +111,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.suddenly = data.suddenly ?? "";
+            this.suddenly = data.suddenWeightLoss;
           }
           this.userEntiresDB = data;
         })

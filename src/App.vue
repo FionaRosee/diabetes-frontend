@@ -1,31 +1,33 @@
-<script setup>
-
-</script>
-
 <template>
   <header>
-    <router-link :to="{ name: 'home' }">
-      Diabetes Check App
+    <router-link :to="{ name: 'home' }" class="icon">
+      <b-icon-house-heart />
     </router-link>
+    <router-link :to="{ name: 'home' }">Diabetes Check App</router-link>
+    <span class="name" v-if="name">Welcome, {{ name }}</span>
   </header>
   <main>
-    <i class="bi bi-house-heart"></i>
-    <!-- FÜR DIE SEITLICHE NAV-BAR IST KEIN PLATZ MEHR! ÜBERSCHRIFT NUN ALS LINK ZU HOME SEITE-->
-    <!-- <nav>
-      <router-link :to="{ name: 'home' }">
-        <b-icon-house class="icon" />
-      </router-link>
-      <b-icon-arrow-left-circle-fill class="icon" />
-    </nav> -->
-    <router-view />
+    <router-view @setName="showName" />
   </main>
 </template>
 
 <script>
-import {get, set} from "idb-keyval";
+import { get, set } from "idb-keyval";
+import { BIconHouseHeart } from "bootstrap-icons-vue";
 
 export default {
+  components: {
+    BIconHouseHeart,
+  },
+  data() {
+    return {
+      name: "",
+    };
+  },
   methods: {
+    showName(name) {
+      this.name = name;
+    },
     prepareDB() {
       //userEntries
       get("userEntries").then((data) => {
@@ -44,10 +46,10 @@ export default {
             visualBlurring: "",
             genitalThrush: "",
             polyphagia: "",
-            weakness: "",
+            weakness: 3,
             suddenWeightLoss: "",
-            polydipsia: "",
-            polyuria: "",
+            polydipsia: 0,
+            polyuria: 0,
           };
           set("userEntries", JSON.parse(JSON.stringify(userEntries)))
             .then(() => {
@@ -65,8 +67,8 @@ export default {
           let dataBackendRequest = {
             age_group: null,
             Gender: null,
-            Polyuria: null,
-            Polydipsia: null,
+            polyuria: null,
+            polydipsia: null,
             sudden_weight_loss: null,
             weakness: null,
             Polyphagia: null,
@@ -99,11 +101,11 @@ export default {
   },
   created() {
     this.prepareDB();
+    const name = localStorage.getItem("name");
+    if (name) this.name = name;
   },
 };
 </script>
-
-
 
 <style lang="scss">
 @import "@/assets/base.css";
@@ -119,8 +121,10 @@ header {
   background: #4fb0e0ad;
   display: flex;
   justify-content: center;
+  position: relative;
 
-  a,a:hover {
+  a,
+  a:hover {
     color: inherit;
     text-decoration: none;
     font-size: 1.5em;
@@ -152,8 +156,29 @@ section {
 }
 
 .icon {
-  width: 3em;
-  height: auto;
+  position: absolute;
+  left: 0.3em;
+  top: 0.3em;
+  bottom: 0.3em;
+  display: flex;
+  align-items: center;
+  width: 2em;
+}
+
+.icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+span.name {
+  position: absolute;
+  top: 0.3em;
+  bottom: 0.3em;
+  display: flex;
+  right: 1em;
   color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 </style>

@@ -18,7 +18,7 @@
         <!-- slider -->
         <vue-slider
           id="slider"
-          v-model="polyuria"
+          v-model.number="polyuria"
           :min="0"
           :max="15"
           ref="sliderObject"
@@ -89,11 +89,9 @@ export default {
   },
   methods: {
     saveEntries() {
-      if (this.polyuria !== "") {
-        const polyuria = parseInt(this.polyuria) > 3 ? 1 : 0;
-        this.userEntiresDB.polyuria = polyuria;
-        this.dataBackendRequestDB.polyuria = polyuria;
-      }
+      const polyuria = this.polyuria > 3 ? 1 : 0;
+      this.userEntiresDB.polyuria = this.polyuria;
+      this.dataBackendRequestDB.polyuria = polyuria;
 
       //save userEntries
       set("userEntries", JSON.parse(JSON.stringify(this.userEntiresDB)))
@@ -118,7 +116,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.polyuria = data.polyuria ?? 0;
+            this.polyuria = data.polyuria;
           }
           this.userEntiresDB = data;
         })
@@ -141,6 +139,11 @@ export default {
   },
   created() {
     this.loadDataDB();
+  },
+  watch: {
+    readyToLaunch() {
+      this.$nextTick(() => this.changeSlider(this.polyuria));
+    },
   },
 };
 </script>
