@@ -47,7 +47,7 @@ export default {
             genitalThrush: "",
             polyphagia: "",
             weakness: 3,
-            suddenWeightLoss: "",
+            suddenWeightLoss: 0,
             polydipsia: 0,
             polyuria: 0,
           };

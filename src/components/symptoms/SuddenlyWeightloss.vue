@@ -14,11 +14,32 @@
       </div>
       <div class="col-2 ms-5 me-5 d-block">
         <!-- fat to thin-->
-        <label for="weightloss">Weightloss:</label>
-        <select name="weightloss" id="weightloss" v-model="suddenly">
-          <option value="yes">more than 10 pounds</option>
-          <option value="no">less than 10 pounds</option>
-        </select>
+        <section class="section">
+          <h2 class="title">Weightloss Counter</h2>
+          <button
+            id="button1"
+            type="button"
+            @click="incrementCounter"
+            class="btn btn-primary btn-sm"
+          >
+            +
+          </button>
+          <h2>{{ counter }}</h2>
+          <button
+            type="button"
+            @click="decrementCounter"
+            class="btn btn-primary btn-sm"
+          >
+            -
+          </button>
+        </section>
+        <!--        <label for="weightloss">Weightloss:</label>-->
+        <i class="bi bi-arrow-down-circle-fill"></i>
+        <i class="bi bi-arrow-up-circle-fill"></i>
+        <!--        <select name="weightloss" id="weightloss" v-model="suddenly">-->
+        <!--          <option value="yes">more than 10 pounds</option>-->
+        <!--          <option value="no">less than 10 pounds</option>-->
+        <!--        </select>-->
         <!-- fat to thin end -->
       </div>
       <!-- description -->
@@ -74,20 +95,25 @@ import { get, set } from "idb-keyval";
 export default {
   data() {
     return {
+      title: "Counter",
+      counter: 0,
       readyToLaunch: false,
       userEntiresDB: null,
       dataBackendRequestDB: null,
-      suddenly: "",
     };
   },
   methods: {
+    incrementCounter() {
+      if (this.counter >= 0) return;
+      this.counter++;
+    },
+    decrementCounter() {
+      this.counter--;
+    },
     saveEntries() {
-      if (this.suddenly !== "") {
-        const weightloss = this.suddenly === "yes" ? 1 : 0;
-        this.userEntiresDB.suddenWeightLoss = this.suddenly;
-        this.dataBackendRequestDB.sudden_weight_loss = weightloss;
-      }
-
+      const weightloss = this.counter <= -10 ? 1 : 0;
+      this.userEntiresDB.suddenWeightLoss = this.counter;
+      this.dataBackendRequestDB.sudden_weight_loss = weightloss;
       //save userEntries
       set("userEntries", JSON.parse(JSON.stringify(this.userEntiresDB)))
         .then(() => {
@@ -111,7 +137,7 @@ export default {
       get("userEntries")
         .then((data) => {
           if (data != null) {
-            this.suddenly = data.suddenWeightLoss;
+            this.counter = data.suddenWeightLoss;
           }
           this.userEntiresDB = data;
         })
@@ -142,5 +168,20 @@ export default {
   border-color: #4fb0e0;
   background-color: #4fb0e0;
 }
+
+.section {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#button1 {
+  justify-content: center;
+}
 </style>
->
