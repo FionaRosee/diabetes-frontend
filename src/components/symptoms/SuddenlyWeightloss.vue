@@ -16,19 +16,21 @@
         <!-- fat to thin-->
         <section class="section">
           <h2 class="title">Weightloss Counter</h2>
+
           <button
             id="button1"
             type="button"
             @click="incrementCounter"
-            class="btn btn-primary btn-sm"
+            class="btn btn -info btn-xs"
           >
             +
           </button>
           <h2>{{ counter }}</h2>
           <button
+            id="button2"
             type="button"
             @click="decrementCounter"
-            class="btn btn-primary btn-sm"
+            class="btn btn -info btn-xs"
           >
             -
           </button>
@@ -182,6 +184,12 @@ h2 {
 }
 
 #button1 {
-  justify-content: center;
+  color: white;
+  background-color: #4fb0e0;
+}
+
+#button2 {
+  color: white;
+  background-color: #4fb0e0;
 }
 </style>
